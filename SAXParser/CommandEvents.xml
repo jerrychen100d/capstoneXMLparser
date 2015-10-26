@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<events>
+	<commandEvents date="2015-10-18">
+		<commandEvent commandId="org.eclipse.ui.edit.text.select.lineStart" count="1"/>
+		<commandEvent commandId="org.eclipse.ui.edit.text.select.lineEnd" count="5"/>
+		<commandEvent commandId="org.eclipse.ui.edit.delete" count="6"/>
+		<commandEvent commandId="org.eclipse.ui.file.save" count="1"/>
+		<commandEvent commandId="org.eclipse.ui.edit.selectAll" count="5"/>
+		<commandEvent commandId="org.eclipse.ui.perspectives.showPerspective" count="2"/>
+		<commandEvent commandId="org.eclipse.ui.file.close" count="1"/>
+		<commandEvent commandId="org.eclipse.equinox.p2.ui.sdk.installationDetails" count="1"/>
+	</commandEvents>
+	<commandEvents date="2015-10-24">
+		<commandEvent commandId="org.eclipse.equinox.p2.ui.sdk.install" count="1"/>
+		<commandEvent commandId="org.eclipse.ui.file.properties" count="3"/>
+		<commandEvent commandId="org.eclipse.ui.edit.text.goto.lineStart" count="1"/>
+		<commandEvent commandId="org.eclipse.ui.edit.text.goto.lineEnd" count="2"/>
+		<commandEvent commandId="org.eclipse.ui.edit.text.select.lineStart" count="1"/>
+		<commandEvent commandId="org.eclipse.ui.edit.delete" count="1"/>
+		<commandEvent commandId="org.eclipse.ui.file.save" count="1"/>
+	</commandEvents>
+</events>
