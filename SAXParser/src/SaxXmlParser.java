@@ -20,7 +20,7 @@ public class SaxXmlParser {
 			List<GroupCommandEvents> eventList = handler.getEventList();
 			
 			for(GroupCommandEvents gce : eventList){
-				//System.out.println(gce.toString());
+				System.out.println(gce.toString());
 			}
 			
 		} catch (ParserConfigurationException | SAXException | IOException e) {

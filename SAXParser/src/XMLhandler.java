@@ -7,8 +7,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class XMLhandler extends DefaultHandler {
 	private List<GroupCommandEvents> eventList = new ArrayList<>();
-	private SingleCommandEvent event = new SingleCommandEvent(null, null, null);
-	private GroupCommandEvents gevent = new GroupCommandEvents(null);
+	private SingleCommandEvent event; //= new SingleCommandEvent(null, null, null);
+	private GroupCommandEvents gevent; //= new GroupCommandEvents(null);
 	
 	public List<GroupCommandEvents> getEventList() {
 		return eventList;
@@ -26,32 +26,33 @@ public class XMLhandler extends DefaultHandler {
 	Integer numOfEvents = 0;
 	
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-		System.out.println("Start Element: " + qName);
+		//System.out.println("1. Start Element: " + qName);
 		if(qName.equalsIgnoreCase("EVENTS")){
-			/*
-			event = new SingleCommandEvent(null,null,null);
-			if(eventList == null){*/
-				numOfEvents++;
-			/*}*/
+			
 		}
 		else if(qName.equalsIgnoreCase("COMMANDEVENTS")){
 			commandEvents = true;
 			date = attributes.getValue("date");
-			gevent.setDate(date);
+			gevent = new GroupCommandEvents(date);
 			
-			System.out.println("Date: " + date);
+			//System.out.println("Date: " + date);
 		}
 		else if(qName.equalsIgnoreCase("COMMANDEVENT")){
 			commandEvent = true;
 			cId = attributes.getValue("commandId");
 			count = attributes.getValue("count");
-			System.out.println("CommandEvent: " + cId + " Count: " + count);
-			event.setAll(cId, command, count);
+			
+			String[] part = cId.split("\\.");
+			command = part[part.length-1];
+			
+			event = new SingleCommandEvent(cId, command, count);
+			
+			//System.out.println("CommandEvent: " + cId + " Count: " + count);
 		}		
 	}
 	
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		System.out.println("End element: " + qName);
+		//System.out.println("3. End element: " + qName);
 		if(qName.equalsIgnoreCase("COMMANDEVENTS")){
 			eventList.add(gevent);
 		}
@@ -61,23 +62,18 @@ public class XMLhandler extends DefaultHandler {
 	}
 	
 	public void characters(char ch[], int start, int length) throws SAXException {
-		
+		//System.out.println("2. Characters function");
 		if(events){
 			//System.out.println("Events: " + new String(ch, start, length));
 			events = false;
 		}
 		else if(commandEvents){
 			//System.out.println("Command Events: " + new String(ch, start, length));
-			commandEvents = false;
-			
+			commandEvents = false;			
 		}
 		else if(commandEvent){
 			//System.out.println("Command Event: " + new String(ch, start, length));
-			commandEvent = false;
-			//event.setAll(cId, null, count);
-			
+			commandEvent = false;	
 		}
 	} 
-	
-	
 }
